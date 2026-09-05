@@ -1,0 +1,19 @@
+schema_version = "1.0.0"
+
+id = "wrapbridge"
+version = "0.2.0"
+name = "WrapBridge"
+tagline = "Bridge to Faceform Wrap: send selection, headless compute, import"
+maintainer = "Maksim Kovalev"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+tags = ["Pipeline"]
+
+[permissions]
+files = "Read/write OBJ and .wrap project in the system temp folder"
