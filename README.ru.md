@@ -26,7 +26,7 @@ N-панель (**WrapBridge**), три кнопки:
 
 ## Установка
 
-**Extension** (Blender 4.2+): *Preferences → Get Extensions → ⌄ Install from Disk* → `wrapbridge_v*.zip`
+**Extension** (Blender 4.2+): скачайте `wrapbridge_v*.zip` со страницы [последнего релиза](https://github.com/abyrvalg379/wrapbridge/releases/latest), затем *Preferences → Get Extensions → ⌄ Install from Disk*.
 
 Легаси-зипы больше не поддерживаются.
 

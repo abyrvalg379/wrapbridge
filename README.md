@@ -26,7 +26,7 @@ The graph itself lives in Wrap: build it once in the GUI (points, FastWrapping, 
 
 ## Installation
 
-**Extension** (Blender 4.2+): *Preferences → Get Extensions → ⌄ Install from Disk* → `wrapbridge_v*.zip`
+**Extension** (Blender 4.2+): download `wrapbridge_v*.zip` from the [latest release](https://github.com/abyrvalg379/wrapbridge/releases/latest), then *Preferences → Get Extensions → ⌄ Install from Disk*.
 
 Legacy zips are no longer supported.
 
