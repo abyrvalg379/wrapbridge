@@ -2,45 +2,47 @@
 
 Blender ⇄ Faceform Wrap bridge. Sends your base mesh and scan to Wrap and brings the wrapped result back — without touching Explorer or a single manual path.
 
+*Документация на русском: [README.ru.md](README.ru.md)*
+
 ![Blender](https://img.shields.io/badge/Blender-4.2%2B-orange) ![License](https://img.shields.io/badge/License-GPL--3.0-blue)
 
-## Что делает
+## What it does
 
-N-панель (**WrapBridge**), три кнопки:
+N-panel (**WrapBridge**), three buttons:
 
-- **Send to Wrap** — выгружает Base + Scan в горячие OBJ и открывает проект в Wrap GUI. Если Wrap уже запущен — просто обновляет файлы (пути в проекте постоянные, достаточно пересчитать ноды LoadGeom). Если шаблон графа менялся — свежий проект переоткрывается автоматически.
-- **Export + Compute** — тот же экспорт + headless-прогон `WrapCmd`. Без GUI вообще. Для графов, которые не требуют ручной правки (точки хранятся внутри шаблона).
-- **Import Results** — затягивает результаты всех `SaveGeom`-нод обратно в сцену.
+- **Send to Wrap** — exports Base + Scan as hot OBJs and opens the project in the Wrap GUI. If Wrap is already running, it just refreshes the files (the paths in the project are constant — recalculating the `LoadGeom` nodes is enough). If the graph template has changed, the fresh project is reopened automatically.
+- **Export + Compute** — the same export plus a headless `WrapCmd` run. No GUI at all. For graphs that don't require manual edits (points are stored inside the template).
+- **Import Results** — pulls the results of all `SaveGeom` nodes back into the scene.
 
-В панели — слоты **Base** и **Scan**; модификаторы применяются при экспорте.
+The panel has **Base** and **Scan** slots; modifiers are applied on export.
 
-## Как это работает
+## How it works
 
-1. WrapBridge хранит шаблон `.wrap` с твоим графом врапинга.
-2. При каждом запуске переписывает пути `LoadGeom` на горячие файлы в `%TEMP%\wrapbridge\` (`base.obj`, `scan.obj`).
-3. Всё, что пишут `Save*`-ноды, находится автоматически на импорте — никаких захардкоженных имён результата.
+1. WrapBridge stores a `.wrap` template with your wrapping graph.
+2. On every run it rewrites the `LoadGeom` paths to the hot files in `%TEMP%\wrapbridge\` (`base.obj`, `scan.obj`).
+3. Anything written by `Save*` nodes is found automatically on import — no hardcoded result names.
 
-Сам граф живёт в Wrap: собери его один раз в GUI (точки, FastWrapping, браш — что нужно), направь `LoadGeom` на горячие файлы и сохрани как `templates/template.wrap`. Точки хранятся внутри шаблона, поэтому последующие прогоны полностью автоматические.
+The graph itself lives in Wrap: build it once in the GUI (points, FastWrapping, brush — whatever you need), point `LoadGeom` at the hot files and save it as `templates/template.wrap`. Points are stored inside the template, so subsequent runs are fully automatic.
 
-## Установка
+## Installation
 
 **Extension** (Blender 4.2+): *Preferences → Get Extensions → ⌄ Install from Disk* → `wrapbridge_v*.zip`
 
-Легаси-зипы больше не поддерживаются.
+Legacy zips are no longer supported.
 
-**Требования:** Faceform Wrap в `C:\Program Files\Faceform\` (путь — константа `WRAP_CMD` в исходнике, поправь под себя).
+**Requirements:** Faceform Wrap in `C:\Program Files\Faceform\` (the path is the `WRAP_CMD` constant in the source — adjust to taste).
 
-## Сборка
+## Build
 
 ```
 python build.py    # -> ../out/wrapbridge_v*_extension.zip
 ```
 
-## Примечания
+## Notes
 
-- Проверено с Faceform Wrap 2025.10.8 (headless `WrapCmd compute` работает на бесплатном триале).
-- `.wrap`-проекты — это JSON: связи нод лежат внутри плагов параметров (`connectedNodeId`); шаблоны графа проще собирать в Wrap GUI, а не руками.
+- Tested with Faceform Wrap 2025.10.8 (headless `WrapCmd compute` works on the free trial).
+- `.wrap` projects are JSON: node connections live inside the parameter plugs (`connectedNodeId`); graph templates are easier to assemble in the Wrap GUI than by hand.
 
-## Лицензия
+## License
 
-GPL-3.0-or-later. Автор: Maksim Kovalev.
+GPL-3.0-or-later. Author: Maksim Kovalev.
