@@ -8,7 +8,7 @@
 bl_info = {
     "name": "WrapBridge",
     "author": "Maksim Kovalev",
-    "version": (0, 5, 3),
+    "version": (0, 5, 4),
     "blender": (4, 2, 0),
     "location": "3D Viewport > N-panel > WrapBridge",
     "description": "Bridge to Faceform Wrap: export base+scan, headless WrapCmd compute, import results",
@@ -133,7 +133,7 @@ def import_results(project_path):
     return imported
 
 
-class WrapBridge_props(PropertyGroup):
+class WRAPBRIDGE_props(PropertyGroup):
     """Слоты source-геометрии для пайплайна."""
 
     base_obj: PointerProperty(
@@ -186,7 +186,7 @@ def _template_stamp(template_path):
     return None
 
 
-class WrapBridge_OT_send(Operator):
+class WRAPBRIDGE_OT_send(Operator):
     """Экспортировать base+scan в открытый Wrap (или открыть его, если закрыт)"""
     bl_idname = "wrapbridge.send_to_wrap"
     bl_label = "Send to Wrap"
@@ -228,7 +228,7 @@ class WrapBridge_OT_send(Operator):
         return {"FINISHED"}
 
 
-class WrapBridge_OT_compute(Operator):
+class WRAPBRIDGE_OT_compute(Operator):
     """Экспортировать base+scan и прогнать Wrap headless"""
     bl_idname = "wrapbridge.compute"
     bl_label = "Export + Compute"
@@ -255,7 +255,7 @@ class WrapBridge_OT_compute(Operator):
         return {"FINISHED"}
 
 
-class WrapBridge_OT_import(Operator):
+class WRAPBRIDGE_OT_import(Operator):
     """Импортировать результаты SaveGeom в сцену"""
     bl_idname = "wrapbridge.import_results"
     bl_label = "Import Results"
@@ -277,7 +277,7 @@ class WrapBridge_OT_import(Operator):
         return {"FINISHED"}
 
 
-class WrapBridge_PT_panel(Panel):
+class WRAPBRIDGE_PT_panel(Panel):
     bl_label = "WrapBridge"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -298,13 +298,13 @@ class WrapBridge_PT_panel(Panel):
         box.label(text="Template: " + os.path.basename(_template_path()))
 
 
-classes = (WrapBridge_props, WrapBridge_OT_send, WrapBridge_OT_compute, WrapBridge_OT_import, WrapBridge_PT_panel)
+classes = (WRAPBRIDGE_props, WRAPBRIDGE_OT_send, WRAPBRIDGE_OT_compute, WRAPBRIDGE_OT_import, WRAPBRIDGE_PT_panel)
 
 
 def register():
     for c in classes:
         bpy.utils.register_class(c)
-    bpy.types.Scene.wrapbridge_props = PointerProperty(type=WrapBridge_props)
+    bpy.types.Scene.wrapbridge_props = PointerProperty(type=WRAPBRIDGE_props)
 
 
 def unregister():
