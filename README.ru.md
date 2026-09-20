@@ -1,5 +1,7 @@
 # WrapBridge
 
+![WrapBridge](cover.png)
+
 Мост Blender ⇄ Faceform Wrap. Отправляет базовый меш и скан в Wrap и возвращает результат врапинга — без Проводника и единого ручного пути.
 
 *English documentation: [README.md](README.md)*

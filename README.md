@@ -1,5 +1,7 @@
 # WrapBridge
 
+![WrapBridge](cover.png)
+
 Blender ⇄ Faceform Wrap bridge. Sends your base mesh and scan to Wrap and brings the wrapped result back — without touching Explorer or a single manual path.
 
 *Документация на русском: [README.ru.md](README.ru.md)*
